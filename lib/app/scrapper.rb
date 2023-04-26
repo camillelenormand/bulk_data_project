@@ -4,6 +4,9 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 require 'json'
+require 'csv'
+
+require_relative "../lib/spreadsheet.rb"
 
 #binding.pry
 
@@ -36,18 +39,62 @@ def get_townhall_list(townhall_list_url)
   end
 
   # Create a hash with the towns and their email addresses
-  hash = towns.zip(emails).to_h
-
-  # Generate JSON file
-  def save_as_JSON(hash)
-  File.open("../../db/emails.json","w") do |f|
-    f.write(hash.to_json)
-    end
-  end
-  save_as_JSON(hash)
-
+  $hash = towns.zip(emails).to_h
 end
 
-# Call the method with the URL of the townhall list page
+
+# Generate JSON file
+def save_as_JSON(hash)
+  File.open("../../db/emails.json","w") do |f|
+    f.write($hash.to_json)
+  end
+end
+
+# Generate .csv file
+def save_as_csv
+
+    # Load JSON file
+    emails = File.read('../../db/emails.json')
+
+    # Parse JSON file
+    data = JSON.parse(emails)
+
+    # Create file
+    CSV.open("../../db/emails.csv", "wb") do |csv|
+      data.each do | municipality, email |
+        csv << [municipality, email]
+    end
+  end
+end
+
 get_townhall_list(townhall_list_url)
+save_as_JSON(hash)
+save_as_csv()
+
+def menu
+  puts "Welcome to the data exporter"
+  puts
+  puts "What kind of file format do you want ?"
+  puts "1. JSON format"
+  puts "2. CSV format"
+  puts "3. Google spreadsheet"
+  puts
+  choice = gets.chomp()
+end
+
+def menu_choice(choice)
+  case choice
+  when 1
+    save_as_JSON(hash)
+  when 2
+    save_as_csv()
+  when 3
+    save_as_spreadsheet
+  else
+    puts "Wrong input. Select between 1,2 or 3"
+    menu_choice
+  end
+end
+
+
 

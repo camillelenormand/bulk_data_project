@@ -4,16 +4,12 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-gem "pry", "~> 0.14.2"
-
-gem "rubocop", "~> 1.50"
-
 gem "json", "~> 2.6"
+
+gem "google_drive", "~> 3.0"
 
 gem "nokogiri", "~> 1.14"
 
-gem "google-api-client", "~> 0.53.0"
+gem "pry", "~> 0.14.2"
 
-gem "googleauth", "~> 1.5"
-
-gem "google_drive", "~> 1.0"
+gem "open-uri", "~> 0.3.0"

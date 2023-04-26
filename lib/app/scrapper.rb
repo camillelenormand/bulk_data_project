@@ -6,11 +6,9 @@ require 'pry'
 require 'json'
 require 'csv'
 
-require_relative "../lib/spreadsheet.rb"
-
 #binding.pry
 
-townhall_list_url = "https://annuaire-des-mairies.com/val-d-oise.html"
+$townhall_list_url = "https://annuaire-des-mairies.com/val-d-oise.html"
 $hash = {}
 
 def get_townhall_list(townhall_list_url)
@@ -68,7 +66,9 @@ def save_as_csv
   end
 end
 
-def menu
+
+def menu_choice
+  
   puts "Welcome to the data exporter"
   puts
   puts "What kind of file format do you want ?"
@@ -77,12 +77,10 @@ def menu
   puts "3. CSV format"
   puts
   choice = gets.chomp().to_i
-end
 
-def menu_choice(choice)
   case choice
   when 1
-    get_townhall_list(townhall_list_url)
+    get_townhall_list($townhall_list_url)
   when 2
     save_as_JSON($hash)
   when 3
@@ -92,6 +90,8 @@ def menu_choice(choice)
     menu_choice(gets.chomp.to_i)
   end
 end
+
+menu_choice
 
 
 

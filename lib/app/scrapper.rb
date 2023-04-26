@@ -1,3 +1,5 @@
+# lib/app/scrapper.rb
+
 require 'nokogiri'   
 require 'open-uri'
 require 'pry'

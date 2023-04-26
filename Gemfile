@@ -13,3 +13,5 @@ gem "nokogiri", "~> 1.14"
 gem "pry", "~> 0.14.2"
 
 gem "open-uri", "~> 0.3.0"
+
+gem "rspec", "~> 3.12"

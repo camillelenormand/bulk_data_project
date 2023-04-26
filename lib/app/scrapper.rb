@@ -85,7 +85,6 @@ def menu_choice(choice)
     get_townhall_list(townhall_list_url)
   when 2
     save_as_JSON($hash)
-    save_as_csv
   when 3
     save_as_csv
   else

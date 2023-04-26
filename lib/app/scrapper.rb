@@ -89,7 +89,7 @@ def menu_choice(choice)
   when 2
     save_as_csv
   else
-    puts "Wrong input. Select between 1,2 or 3"
+    puts "Wrong input. Enter 1 or 2"
     menu_choice(gets.chomp.to_i)
   end
 end

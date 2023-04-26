@@ -68,7 +68,7 @@ end
 
 
 def menu_choice
-  
+
   puts "Welcome to the data exporter"
   puts
   puts "What kind of file format do you want ?"
@@ -80,7 +80,7 @@ def menu_choice
 
   case choice
   when 1
-    get_townhall_list($townhall_list_url)
+    puts get_townhall_list($townhall_list_url)
   when 2
     save_as_JSON($hash)
   when 3

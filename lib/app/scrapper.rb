@@ -72,8 +72,9 @@ def menu
   puts "Welcome to the data exporter"
   puts
   puts "What kind of file format do you want ?"
-  puts "1. JSON format"
-  puts "2. CSV format"
+  puts "1. Hash format"
+  puts "2. JSON format"
+  puts "3. CSV format"
   puts
   choice = gets.chomp().to_i
 end
@@ -81,11 +82,14 @@ end
 def menu_choice(choice)
   case choice
   when 1
-    save_as_JSON($hash)
+    get_townhall_list(townhall_list_url)
   when 2
+    save_as_JSON($hash)
+    save_as_csv
+  when 3
     save_as_csv
   else
-    puts "Wrong input. Enter 1 or 2"
+    puts "Wrong input. Enter 1, 2 or 2"
     menu_choice(gets.chomp.to_i)
   end
 end

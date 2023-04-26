@@ -68,10 +68,6 @@ def save_as_csv
   end
 end
 
-get_townhall_list(townhall_list_url)
-save_as_JSON(hash)
-save_as_csv()
-
 def menu
   puts "Welcome to the data exporter"
   puts
